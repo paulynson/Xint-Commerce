@@ -49,9 +49,8 @@ function Header() {
             <li>
               <NavLink
                 to="/"
-                className={(isActive) =>
-                  "nav-link hover:text-yellow-400 text-yellow-400" +
-                  (!isActive ? " text-white" : "")
+                className={({ isActive }) =>
+                  isActive ? "text-yellow-400 font-bold" : "text-white"
                 }
               >
                 Home
@@ -60,9 +59,8 @@ function Header() {
             <li>
               <NavLink
                 to="/products"
-                className={(isActive) =>
-                  "nav-link hover:text-yellow-400 text-yellow-400" +
-                  (!isActive ? " text-white" : "")
+                className={({ isActive }) =>
+                  isActive ? "text-yellow-400 font-bold" : "text-white"
                 }
               >
                 Products
@@ -71,9 +69,8 @@ function Header() {
             <li>
               <NavLink
                 to="/categories"
-                className={(isActive) =>
-                  "nav-link hover:text-yellow-400 text-yellow-400" +
-                  (!isActive ? " text-white" : "")
+                className={({ isActive }) =>
+                  isActive ? "text-yellow-400 font-bold" : "text-white"
                 }
               >
                 Categories
@@ -82,9 +79,8 @@ function Header() {
             <li>
               <NavLink
                 to="/login"
-                className={(isActive) =>
-                  "nav-link hover:text-yellow-400 text-yellow-400" +
-                  (!isActive ? " text-white" : "")
+                className={({ isActive }) =>
+                  isActive ? "text-yellow-400 font-bold" : "text-white"
                 }
               >
                 Login
@@ -93,9 +89,8 @@ function Header() {
             <li>
               <NavLink
                 to="/signup"
-                className={(isActive) =>
-                  "nav-link hover:text-yellow-400 text-yellow-400" +
-                  (!isActive ? " text-white" : "")
+                className={({ isActive }) =>
+                  isActive ? "text-yellow-400 font-bold" : "text-white"
                 }
               >
                 Signup
@@ -123,9 +118,8 @@ function Header() {
               <li>
                 <NavLink
                   to="/"
-                  className={(isActive) =>
-                    "nav-link hover:text-yellow-400 text-yellow-400" +
-                    (!isActive ? " text-white" : "")
+                  className={({ isActive }) =>
+                    isActive ? "text-yellow-400 font-bold" : "text-white"
                   }
                 >
                   Home
@@ -134,9 +128,8 @@ function Header() {
               <li>
                 <NavLink
                   to="/products"
-                  className={(isActive) =>
-                    "nav-link hover:text-yellow-400 text-yellow-400" +
-                    (!isActive ? " text-white" : "")
+                  className={({ isActive }) =>
+                    isActive ? "text-yellow-400 font-bold" : "text-white"
                   }
                 >
                   Products
@@ -145,9 +138,8 @@ function Header() {
               <li>
                 <NavLink
                   to="/categories"
-                  className={(isActive) =>
-                    "nav-link hover:text-yellow-400 text-yellow-400" +
-                    (!isActive ? " text-white" : "")
+                  className={({ isActive }) =>
+                    isActive ? "text-yellow-400 font-bold" : "text-white"
                   }
                 >
                   Categories
@@ -156,9 +148,8 @@ function Header() {
               <li>
                 <NavLink
                   to="/login"
-                  className={(isActive) =>
-                    "nav-link hover:text-yellow-400 text-yellow-400" +
-                    (!isActive ? " text-white" : "")
+                  className={({ isActive }) =>
+                    isActive ? "text-yellow-400 font-bold" : "text-white"
                   }
                 >
                   Login
@@ -167,9 +158,8 @@ function Header() {
               <li>
                 <NavLink
                   to="/signup"
-                  className={(isActive) =>
-                    "nav-link hover:text-yellow-400 text-yellow-400" +
-                    (!isActive ? " text-white" : "")
+                  className={({ isActive }) =>
+                    isActive ? "text-yellow-400 font-bold" : "text-white"
                   }
                 >
                   Signup

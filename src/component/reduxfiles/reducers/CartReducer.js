@@ -1,8 +1,12 @@
 import React from "react";
+// import { useEffect }  from "react";
 
 const cart = [];
+const total = 0;
 
 const reducer = (state = cart, action) => {
+  // Store on LocalStorage
+
   const product = action.payload;
   switch (action.type) {
     case "ADDITEM":

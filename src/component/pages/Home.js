@@ -24,9 +24,9 @@ const Home = () => {
   return (
     <div>
       <div className="">
-        <div className="relative flex justify-center items-center text-center">
+        <div className="relative flex justify-center items-center text-center ">
           <img src="/images/e4.jpg" alt="pix" className="h-[500px] w-full" />
-          <p className="absolute text-white font-bold text-6xl drop-shadow-lg shadow-black">
+          <p className="absolute text-white font-bold text-6xl drop-shadow-lg max-w-7xl shadow-black px-6">
             Create Your Individuality
           </p>
         </div>
@@ -76,7 +76,7 @@ const Home = () => {
         <div className="mt-6">
           <div className="relative flex justify-center items-center text-center">
             <img src="/images/e2.jpg" alt="pix" className="h-[500px] w-full" />
-            <p className="absolute text-yellow-400 font-bold text-6xl drop-shadow-lg shadow-black">
+            <p className="absolute text-yellow-400 font-bold text-6xl drop-shadow-lg shadow-black max-w-7xl">
               Building your Desired Store
             </p>
           </div>

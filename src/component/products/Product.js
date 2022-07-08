@@ -54,7 +54,7 @@ function Product() {
   }, [id]);
 
   return (
-    <div className="relative flex gap-4 py-24 lg:flex lg:flex-row flex-col px-6">
+    <div className="relative flex gap-4 py-24 lg:flex lg:flex-row flex-col px-10">
       <div
         className="absolute top-3 left-2/4 flex p-2 h-8 w-8 items-center justify-center text-white rounded-full bg-green-700 hover:bg-green-500"
         onClick={handleBack}
@@ -112,6 +112,11 @@ function Product() {
               alt="pix"
               className="lg:h-64 h-52 w-full"
             />
+          </div>
+          <div className="my-8 flex justify-center items-center">
+            <button className="py-2 bg-green-500 hover:bg-green-700 text-white px-3">
+              Contact Us
+            </button>
           </div>
         </div>
       </section>
