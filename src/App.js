@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Products from "../src/component/products/Products.js";
+import Categories from "../src/component/products/Categories.js";
+import Product from "../src/component/products/Product.js";
+import Home from "../src/component/pages/Home";
+import NotFound from "../src/component/pages/NotFound";
+import { Routes, Route } from "react-router-dom";
+import Footer from "./component/layouts/Footer";
+import Header from "./component/layouts/Header";
+import ScrollToTop from "./component/ScrollToTop";
+import Cart from "./component/carts/Cart";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-gray-100">
+      <Header />
+      <Routes>
+        {/* <Route path="/" element={<Products />} /> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <ScrollToTop />
+
+      <Footer />
     </div>
   );
 }
-
-export default App;
