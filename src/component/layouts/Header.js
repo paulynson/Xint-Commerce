@@ -27,7 +27,7 @@ function Header() {
         <Link to="/" className="hover:text-yellow-200">
           <div className="text-white flex gap-1 items-center justify-center hover:text-yellow-200">
             <SiBigcartel className="text-3xl" />
-            <p className="font-bold text-2xl">Xint-Commerce</p>
+            <p className="font-bold lg:text-2xl text-lg">Xint-Commerce</p>
           </div>
         </Link>
         <div>

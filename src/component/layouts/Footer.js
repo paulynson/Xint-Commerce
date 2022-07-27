@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { SiBigcartel } from "react-icons/si";
-import { date } from "yup";
+// import { date } from "yup";
 
 function Footer() {
   const date = new Date();

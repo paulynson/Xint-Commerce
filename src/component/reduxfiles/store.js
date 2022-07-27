@@ -15,5 +15,8 @@ export default () => {
   let persistor = persistStore(store);
   return { store, persistor };
 };
-export let store = createStore(persistedReducer);
+export let store = createStore(
+  persistedReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 export let persistor = persistStore(store);
