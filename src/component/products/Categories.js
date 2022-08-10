@@ -6,6 +6,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { useDispatch } from "react-redux";
 import { addCart } from "../reduxfiles/actions";
+import Swal from "sweetalert2";
 
 const Categories = () => {
   const [jewelery, setJewelery] = useState([]);
@@ -16,6 +17,12 @@ const Categories = () => {
   const dispatch = useDispatch();
 
   const addProduct = (product) => {
+    Swal.fire({
+      icon: "success",
+      title: "Added to cart",
+      showConfirmButton: false,
+      timer: 1000,
+    });
     dispatch(addCart(product));
   };
 

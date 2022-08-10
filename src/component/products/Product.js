@@ -7,6 +7,7 @@ import SideBar from "../layouts/SideBar";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { addCart } from "../reduxfiles/actions";
+import Swal from "sweetalert2";
 
 function Product() {
   const { id } = useParams();
@@ -14,6 +15,12 @@ function Product() {
   const dispatch = useDispatch();
 
   const addProduct = (product) => {
+    Swal.fire({
+      icon: "success",
+      title: "Added to cart",
+      showConfirmButton: false,
+      timer: 1000,
+    });
     dispatch(addCart(product));
   };
 
