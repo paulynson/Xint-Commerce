@@ -52,12 +52,12 @@ const Login = () => {
         </div>
         <div className="my-3 flex justify-center">
           <p className="text-red-500 text-xs italic">
-            Not Registered .
+            Not Registered?
             <Link
               className="inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-800"
               to="/signup"
             >
-              Sign Up?
+              Sign Up
             </Link>
           </p>
         </div>
