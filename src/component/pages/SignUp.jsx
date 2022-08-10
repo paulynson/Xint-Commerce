@@ -13,7 +13,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center items-center my-48">
+    <div className="flex justify-center items-center my-24 lg:my-48">
       <form className="bg-white shadow-md rounded px-8 pt-8 pb-8 mb-4 lg:w-[400px]">
         <div className="mb-4">
           <label
