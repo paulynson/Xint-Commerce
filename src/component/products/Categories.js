@@ -70,7 +70,7 @@ const Categories = () => {
     <div>
       <div className="">
         <div className="relative flex justify-center items-center text-center">
-          <img src="/images/e9.jpg" alt="pix" className="h-[500px] w-full" />
+          <img src="/images/e9.jpg" alt="pix" className="h-[650px] w-full" />
           <p className="absolute text-yellow-500 font-bold lg:text-6xl text-3xl drop-shadow-lg shadow-white max-w-7xl">
             Categories and Products
           </p>

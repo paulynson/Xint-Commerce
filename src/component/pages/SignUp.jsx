@@ -1,19 +1,28 @@
 import React from "react";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { SiBigcartel } from "react-icons/si";
 
 // import { signup } from "../../firebase/firebase";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const handleSignup = async () => {
     Swal.fire({
       icon: "success",
       title: "User Signup Successful",
+      timer: 1500,
     });
+    return navigate("/login");
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen flex-col">
+      <div className="text-green-700 flex gap-1 items-center justify-center my-6">
+        <SiBigcartel className="text-2xl" />
+        <p className=" lg:text-[1rem] text-lg">Xint-Commerce</p>
+      </div>
+      <h4 className="my-8 text-3xl font-bold">SIGNUP</h4>
       <form className="bg-white shadow-md rounded px-8 pt-8 pb-8 mb-4 lg:w-[400px]">
         <div className="mb-4">
           <label

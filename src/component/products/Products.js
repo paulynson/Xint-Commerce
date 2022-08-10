@@ -32,7 +32,7 @@ const Products = () => {
     <div>
       <div className="">
         <div className="relative flex justify-center items-center text-center">
-          <img src="/images/e8.jpg" alt="pix" className="h-[500px] w-full" />
+          <img src="/images/e8.jpg" alt="pix" className="h-[650px] w-full" />
           <p className="absolute text-white font-bold lg:text-6xl text-3xl drop-shadow-lg shadow-black max-w-7xl">
             Plain and World Class Products
           </p>

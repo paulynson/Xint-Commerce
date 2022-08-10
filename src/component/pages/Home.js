@@ -25,7 +25,7 @@ const Home = () => {
     <div>
       <div className="">
         <div className="relative flex justify-center items-center text-center ">
-          <img src="/images/e4.jpg" alt="pix" className="h-[500px] w-full" />
+          <img src="/images/e4.jpg" alt="pix" className="h-[650px] w-full" />
           <p className="absolute text-white font-bold text-6xl drop-shadow-lg max-w-7xl shadow-black px-6">
             Create Your Individuality
           </p>
