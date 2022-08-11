@@ -10,9 +10,11 @@ const Login = () => {
   const currentUser = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    await login(emailRef.current.value, passwordRef.current.value);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
     try {
+      await login(emailRef.current.value, passwordRef.current.value);
       Swal.fire({
         icon: "success",
         title: "User Logged In Successful",
@@ -22,7 +24,7 @@ const Login = () => {
     } catch {
       Swal.fire({
         icon: "error",
-        title: `${currentUser?.email} is not Registered`,
+        title: `Email is not Registered`,
         showConfirmButton: false,
         timer: 2500,
       });
@@ -35,7 +37,10 @@ const Login = () => {
         <p className=" lg:text-[1rem] text-lg">Xint-Commerce</p>
       </div>
       <h4 className="my-8 text-3xl font-bold">LOGIN</h4>
-      <form className="bg-white shadow-md rounded px-8 pt-8 pb-8 mb-4 lg:w-[400px]">
+      <form
+        className="bg-white shadow-md rounded px-8 pt-8 pb-8 mb-4 lg:w-[400px]"
+        onSubmit={handleLogin}
+      >
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -63,13 +68,13 @@ const Login = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             ref={passwordRef}
             type="password"
+            required
           />
         </div>
         <div className="flex items-center justify-center">
           <button
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={handleLogin}
+            type="submit"
           >
             Log In
           </button>
