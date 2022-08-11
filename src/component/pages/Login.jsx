@@ -48,6 +48,7 @@ const Login = () => {
             id="username"
             type="email"
             ref={emailRef}
+            required
           />
         </div>
         <div className="mb-6">

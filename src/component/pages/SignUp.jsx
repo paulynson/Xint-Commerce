@@ -24,9 +24,9 @@ const SignUp = () => {
       });
       return navigate("/login");
     } catch {
-      Swal.fire({
+      return Swal.fire({
         icon: "error",
-        title: `${currentUser?.email} is already Registered`,
+        title: `Email is already registered`,
         showConfirmButton: false,
         timer: 2500,
       });
@@ -52,6 +52,7 @@ const SignUp = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="email"
             ref={emailRef}
+            required
             // value={email}
             // onChange={(e) => setEmail(e.value.target)}
           />

@@ -18,6 +18,12 @@ function Header() {
   const handleLogout = () => {
     try {
       logout();
+      Swal.fire({
+        icon: "success",
+        title: `${currentUser?.email} have been logged out`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/");
     } catch {
       Swal.fire({
@@ -114,7 +120,7 @@ function Header() {
             </li>
             <>
               {currentUser ? (
-                <li>
+                <li className="hidden">
                   <NavLink
                     to="/login"
                     className={({ isActive }) =>
@@ -211,7 +217,7 @@ function Header() {
               </li>
               <>
                 {currentUser ? (
-                  <li>
+                  <li className="hidden">
                     <NavLink
                       to="/login"
                       className={({ isActive }) =>
