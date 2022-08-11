@@ -15,22 +15,32 @@ const SignUp = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
       Swal.fire({
         icon: "success",
-        title: "User Signup Successful",
+        title: `${emailRef.current.value} signup successful`,
         showConfirmButton: false,
         timer: 1500,
       });
       return navigate("/login");
     } catch {
-      return Swal.fire({
-        icon: "error",
-        title: `Email is already registered`,
-        showConfirmButton: false,
-        timer: 2500,
-      });
+      if (passwordRef.current.value.length < 8) {
+        return Swal.fire({
+          icon: "info",
+          title: `Password length must not be less than 8 characters`,
+          showConfirmButton: false,
+          timer: 5500,
+        });
+      } else {
+        return Swal.fire({
+          icon: "error",
+          title: `${emailRef.current.value} is already registered`,
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      }
     }
   };
 

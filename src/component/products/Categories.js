@@ -38,7 +38,7 @@ const Categories = () => {
       const url = "https://fakestoreapi.com/products/category/electronics";
       const res = await axios(url);
       setElectronics(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     };
     fetchElectronics();
   }, []);
@@ -50,7 +50,7 @@ const Categories = () => {
     const url = "https://fakestoreapi.com/products/category/electronics";
     const res = await axios(url);
     setElectronics(res.data);
-    console.log(res.data);
+    // console.log(res.data);
   };
 
   //   Jewelery

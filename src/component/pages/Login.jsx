@@ -17,14 +17,15 @@ const Login = () => {
       await login(emailRef.current.value, passwordRef.current.value);
       Swal.fire({
         icon: "success",
-        title: "User Logged In Successful",
+        title: `${emailRef.current.value} is logged in successful`,
+        showConfirmButton: false,
         timer: 1500,
       });
       return navigate("/");
     } catch {
       Swal.fire({
         icon: "error",
-        title: `Email is not Registered`,
+        title: `${emailRef.current.value} is not registered`,
         showConfirmButton: false,
         timer: 2500,
       });

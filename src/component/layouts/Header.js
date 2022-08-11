@@ -36,7 +36,7 @@ function Header() {
   };
 
   const state = useSelector((state) => state.CartReducer);
-  console.log(state.length);
+  // console.log(state.length);
 
   const variants = {
     hidden: { opacity: 0 },

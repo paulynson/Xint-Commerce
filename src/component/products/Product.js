@@ -32,7 +32,7 @@ function Product() {
   const tDate = `${date.getDate()}-${
     date.getMonth() + 1
   }-${date.getFullYear()}`;
-  console.log(tDate);
+  // console.log(tDate);
 
   // Scroll to top
   useEffect(() => {
@@ -44,7 +44,7 @@ function Product() {
     date: tDate,
     products: [{ productId: id }],
   };
-  console.log(data);
+  // console.log(data);
 
   const handleBack = () => {
     navigate(-1);
@@ -53,7 +53,7 @@ function Product() {
   useEffect(() => {
     const fetchProduct = async () => {
       const res = await axios("https://fakestoreapi.com/products/" + id);
-      console.log("this is the fetched ", res.data);
+      // console.log("this is the fetched ", res.data);
       setProduct(res.data);
       // console.log(data.user);
     };
