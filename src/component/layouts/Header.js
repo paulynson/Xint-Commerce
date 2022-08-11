@@ -3,12 +3,31 @@ import { BsFillCartFill } from "react-icons/bs";
 import { SiBigcartel } from "react-icons/si";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgClose } from "react-icons/cg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth, logout } from "../../firebase/firebase";
+import Swal from "sweetalert2";
 
 function Header() {
   const [show, setShow] = useState(false);
+  const currentUser = useAuth();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    try {
+      logout();
+      navigate("/");
+    } catch {
+      Swal.fire({
+        icon: "error",
+        title: `${currentUser?.email} not logged in`,
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    }
+  };
 
   const state = useSelector((state) => state.CartReducer);
   console.log(state.length);
@@ -32,10 +51,27 @@ function Header() {
         </Link>
         <div>
           {!show ? (
-            <GiHamburgerMenu
-              className="text-white text-2xl cursor-pointer hover:text-yellow-400 lg:hidden"
-              onClick={handlesToggle}
-            />
+            <>
+              <div className="flex space-x-6 items-center">
+                {/* Cart for Mobile */}
+                <div className="text-center items center flex lg:hidden items-center justify-center my-6 ">
+                  <Link
+                    to="/cart"
+                    className=" max-w-10 relative cursor-pointer"
+                  >
+                    <BsFillCartFill className="text-white text-4xl hover:text-yellow-200 hover:border-2" />{" "}
+                    <div className="h-4 w-4 flex itms-center justify-center absolute top-0 right-0 text-xs font-bold bg-yellow-400 hover:bg-green-500 rounded-full hover:border-2">
+                      <p className=""> {state.length}</p>
+                    </div>
+                  </Link>
+                </div>
+                {/* Cart for Mobile */}
+                <GiHamburgerMenu
+                  className="text-white text-2xl cursor-pointer hover:text-yellow-400 lg:hidden"
+                  onClick={handlesToggle}
+                />
+              </div>
+            </>
           ) : (
             <CgClose
               className="text-2xl cursor-pointer hover:text-red-800 text-white drop-shadow-md shadow-md border-white lg:hidden"
@@ -76,26 +112,54 @@ function Header() {
                 Categories
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive ? "text-yellow-400 font-bold" : "text-white"
-                }
-              >
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/signup"
-                className={({ isActive }) =>
-                  isActive ? "text-yellow-400 font-bold" : "text-white"
-                }
-              >
-                Signup
-              </NavLink>
-            </li>
+            <>
+              {currentUser ? (
+                <li>
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive ? "text-yellow-400 font-bold" : "text-white"
+                    }
+                  ></NavLink>
+                </li>
+              ) : (
+                <li>
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive ? "text-yellow-400 font-bold" : "text-white"
+                    }
+                  >
+                    Login
+                  </NavLink>
+                </li>
+              )}
+            </>
+            <>
+              {currentUser ? (
+                <li>
+                  <button
+                    className={({ isActive }) =>
+                      isActive ? "text-yellow-400 font-bold" : "text-white"
+                    }
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                </li>
+              ) : (
+                <li>
+                  <NavLink
+                    to="/signup"
+                    className={({ isActive }) =>
+                      isActive ? "text-yellow-400 font-bold" : "text-white"
+                    }
+                  >
+                    Signup
+                  </NavLink>
+                </li>
+              )}
+            </>
           </ul>
           <Link to="/cart" className="relative hover:cursor-pointer">
             <BsFillCartFill className="text-white text-4xl" />{" "}
@@ -145,35 +209,63 @@ function Header() {
                   Categories
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/login"
-                  className={({ isActive }) =>
-                    isActive ? "text-yellow-400 font-bold" : "text-white"
-                  }
-                >
-                  Login
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/signup"
-                  className={({ isActive }) =>
-                    isActive ? "text-yellow-400 font-bold" : "text-white"
-                  }
-                >
-                  Signup
-                </NavLink>
-              </li>
+              <>
+                {currentUser ? (
+                  <li>
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) =>
+                        isActive ? "text-yellow-400 font-bold" : "text-white"
+                      }
+                    ></NavLink>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) =>
+                        isActive ? "text-yellow-400 font-bold" : "text-white"
+                      }
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                )}
+              </>
+              <>
+                {currentUser ? (
+                  <li>
+                    <button
+                      className={({ isActive }) =>
+                        isActive ? "text-yellow-400 font-bold" : "text-white"
+                      }
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink
+                      to="/signup"
+                      className={({ isActive }) =>
+                        isActive ? "text-yellow-400 font-bold" : "text-white"
+                      }
+                    >
+                      Signup
+                    </NavLink>
+                  </li>
+                )}
+              </>
             </ul>
-            <div className="text-center items center flex items-center justify-center my-6 ">
+            {/* <div className="text-center items center flex items-center justify-center my-6 ">
               <Link to="/cart" className=" max-w-10 relative cursor-pointer">
                 <BsFillCartFill className="text-white text-4xl hover:text-yellow-200 hover:border-2" />{" "}
                 <div className="h-4 w-4 flex itms-center justify-center absolute top-0 right-0 text-xs font-bold bg-yellow-400 hover:bg-green-500 rounded-full hover:border-2">
                   <p className=""> {state.length}</p>
                 </div>
               </Link>
-            </div>
+            </div> */}
           </motion.div>
         </AnimatePresence>
       )}

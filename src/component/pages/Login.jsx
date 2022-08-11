@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { SiBigcartel } from "react-icons/si";
-
-// import { login } from "../../firebase/firebase";
+import { login, useAuth } from "../../firebase/firebase";
 
 const Login = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const currentUser = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    Swal.fire({
-      icon: "success",
-      title: "User Logged In Successful",
-      timer: 1500,
-    });
-    return navigate("/");
+    await login(emailRef.current.value, passwordRef.current.value);
+    try {
+      Swal.fire({
+        icon: "success",
+        title: "User Logged In Successful",
+        timer: 1500,
+      });
+      return navigate("/");
+    } catch {
+      Swal.fire({
+        icon: "error",
+        title: `${currentUser?.email} is not Registered`,
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    }
   };
   return (
     <div className="flex justify-center items-center h-screen flex-col ">
@@ -35,6 +47,7 @@ const Login = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="email"
+            ref={emailRef}
           />
         </div>
         <div className="mb-6">
@@ -47,7 +60,7 @@ const Login = () => {
 
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
+            ref={passwordRef}
             type="password"
           />
         </div>
@@ -64,7 +77,7 @@ const Login = () => {
           <p className="text-red-500 text-xs italic">
             Not Registered?
             <Link
-              className="inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-800"
+              className="inline-block align-baseline font-bold text-sm text-green-500 hover:text-green-800 ml-3"
               to="/signup"
             >
               Sign Up

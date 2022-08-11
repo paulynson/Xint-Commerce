@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import { SiBigcartel } from "react-icons/si";
-
-// import { signup } from "../../firebase/firebase";
+import { signup, useAuth } from "../../firebase/firebase";
 
 const SignUp = () => {
+  // const [email, setEmail] = useState(null);
+  // const [password, setPassword] = useState(null);
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const currentUser = useAuth();
   const navigate = useNavigate();
+
   const handleSignup = async () => {
-    Swal.fire({
-      icon: "success",
-      title: "User Signup Successful",
-      timer: 1500,
-    });
-    return navigate("/login");
+    try {
+      await signup(emailRef.current.value, passwordRef.current.value);
+      Swal.fire({
+        icon: "success",
+        title: "User Signup Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return navigate("/login");
+    } catch {
+      Swal.fire({
+        icon: "error",
+        title: `${currentUser?.email} is already Registered`,
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    }
   };
 
   return (
@@ -33,8 +50,10 @@ const SignUp = () => {
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
             type="email"
+            ref={emailRef}
+            // value={email}
+            // onChange={(e) => setEmail(e.value.target)}
           />
         </div>
         <div className="mb-6">
@@ -47,8 +66,10 @@ const SignUp = () => {
 
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
             type="password"
+            ref={passwordRef}
+            // value={password}
+            // onChange={(e) => setPassword(e.value.target)}
           />
         </div>
         <div className="flex items-center justify-center">
