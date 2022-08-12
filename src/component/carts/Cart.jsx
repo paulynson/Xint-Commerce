@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteCart } from "../reduxfiles/actions";
 import { BsFillCartFill } from "react-icons/bs";
 import { CgClose } from "react-icons/cg";
+import Swal from "sweetalert2";
 
 export default function Cart() {
   const state = useSelector((state) => state.CartReducer);
@@ -11,9 +12,36 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   const delProduct = (product) => {
-    if (window.confirm("Do you want to delete this product?")) {
-      dispatch(deleteCart(product));
-    }
+    // if (window.confirm("Do you want to delete this product?")) {
+    //   dispatch(deleteCart(product));
+    // }
+    // if (
+    //   Swal.fire({
+    //     icon: "info",
+    //     text: "Do you want to delete this?",
+    //   })
+    // ) {
+    //   dispatch(deleteCart(product));
+    // }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          text: "product is deleted",
+          icon: "info",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        dispatch(deleteCart(product));
+      }
+    });
   };
   return (
     <div className="p-6 border bg-green-100">

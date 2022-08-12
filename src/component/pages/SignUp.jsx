@@ -26,13 +26,10 @@ const SignUp = () => {
       });
       return navigate("/login");
     } catch {
-      if (
-        passwordRef.current.value.length === 6 &&
-        passwordRef.current.value.length < 8
-      ) {
+      if (passwordRef.current.value.length < 6) {
         return Swal.fire({
           icon: "info",
-          title: `Password length must not be less than 8 characters`,
+          title: `Password length must not be less than 6 characters`,
           showConfirmButton: false,
           timer: 5500,
         });
