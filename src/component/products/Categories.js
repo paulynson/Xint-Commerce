@@ -77,8 +77,12 @@ const Categories = () => {
     <div>
       <div className="">
         <div className="relative flex justify-center items-center text-center">
-          <img src="/images/e9.jpg" alt="pix" className="h-[650px] w-full" />
-          <p className="absolute text-yellow-500 font-bold lg:text-6xl text-3xl drop-shadow-lg shadow-white max-w-7xl">
+          <img
+            src="/images/e9.jpg"
+            alt="pix"
+            className="lg:h-[650px] h-[300px] w-full"
+          />
+          <p className="absolute text-yellow-500 font-bold lg:text-6xl text-4xl drop-shadow-lg shadow-white max-w-7xl">
             Categories and Products
           </p>
         </div>
@@ -113,7 +117,7 @@ const Categories = () => {
                           <img
                             src={electronic.image}
                             alt={electronic.title}
-                            className="w-full img-box"
+                            className="img-box"
                           />
                           <div className="py-6">
                             <p className="my-2 text-xs">
@@ -151,7 +155,7 @@ const Categories = () => {
                           <img
                             src={jewel.image}
                             alt={jewel.title}
-                            className="w-full img-box"
+                            className="img-box"
                           />
                           <div className="py-6">
                             <p className="my-2 text-xs">
@@ -189,7 +193,7 @@ const Categories = () => {
                           <img
                             src={men.image}
                             alt={men.title}
-                            className="w-full img-box"
+                            className="img-box"
                           />
                           <div className="py-6">
                             <p className="my-2 text-xs">
@@ -227,7 +231,7 @@ const Categories = () => {
                           <img
                             src={women.image}
                             alt={women.title}
-                            className="w-full img-box"
+                            className="img-box"
                           />
                           <div className="py-6">
                             <p className="my-2 text-xs">

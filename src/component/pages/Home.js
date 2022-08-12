@@ -32,8 +32,12 @@ const Home = () => {
     <div>
       <div className="">
         <div className="relative flex justify-center items-center text-center ">
-          <img src="/images/e4.jpg" alt="pix" className="h-[650px] w-full" />
-          <p className="absolute text-white font-bold text-6xl drop-shadow-lg max-w-7xl shadow-black px-6">
+          <img
+            src="/images/e4.jpg"
+            alt="pix"
+            className="lg:h-[650px] h-[300px] w-full"
+          />
+          <p className="absolute text-white font-bold lg:text-6xl text-4xl drop-shadow-lg max-w-7xl shadow-black px-6">
             Create Your Individuality
           </p>
         </div>
@@ -58,7 +62,7 @@ const Home = () => {
                     <img
                       src={product.image}
                       alt={product.title}
-                      className="w-full img-box"
+                      className="img-box"
                     />
                     <div className="py-6">
                       <p className="my-2 text-xs">
@@ -107,7 +111,7 @@ const Home = () => {
                     <img
                       src={product.image}
                       alt={product.title}
-                      className="w-full img-box"
+                      className="img-box"
                     />
                     <div className="py-6">
                       <p className="my-2 text-xs">

@@ -12,7 +12,14 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+    if (currentUser?.password !== passwordRef.current.value) {
+      return Swal.fire({
+        icon: "info",
+        title: `${passwordRef.current.value} is incorrect`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
     try {
       await login(emailRef.current.value, passwordRef.current.value);
       Swal.fire({

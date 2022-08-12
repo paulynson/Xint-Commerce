@@ -39,8 +39,12 @@ const Products = () => {
     <div>
       <div className="">
         <div className="relative flex justify-center items-center text-center">
-          <img src="/images/e8.jpg" alt="pix" className="h-[650px] w-full" />
-          <p className="absolute text-white font-bold lg:text-6xl text-3xl drop-shadow-lg shadow-black max-w-7xl">
+          <img
+            src="/images/e8.jpg"
+            alt="pix"
+            className="lg:h-[650px] h-[300px] w-full"
+          />
+          <p className="absolute text-white font-bold lg:text-6xl text-4xl drop-shadow-lg shadow-black max-w-7xl">
             Plain and World Class Products
           </p>
         </div>
@@ -62,7 +66,7 @@ const Products = () => {
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full img-box"
+                    className="img-box"
                   />
                   <div className="py-6">
                     <p className="my-2 text-xs">{product.title.slice(0, 24)}</p>
