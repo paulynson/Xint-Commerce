@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (currentUser?.password !== passwordRef.current.value) {
+    if (passwordRef.current.value !== currentUser.password) {
       return Swal.fire({
         icon: "info",
         title: `${passwordRef.current.value} is incorrect`,
