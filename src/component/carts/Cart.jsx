@@ -1,28 +1,29 @@
 import React from "react";
+// import { useState } from "react";
 import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux";
 import { deleteCart } from "../reduxfiles/actions";
+// import { increaseQuantity } from "../reduxfiles/actions";
+// import { decreaseQuantity } from "../reduxfiles/actions";
 import { BsFillCartFill } from "react-icons/bs";
 import { CgClose } from "react-icons/cg";
 import Swal from "sweetalert2";
 
 export default function Cart() {
-  const state = useSelector((state) => state.CartReducer);
+  const { items, total } = useSelector((state) => state.cart);
+  // const [inc, setInc] = useState(0);
 
   const dispatch = useDispatch();
 
-  const delProduct = (product) => {
-    // if (window.confirm("Do you want to delete this product?")) {
-    //   dispatch(deleteCart(product));
-    // }
-    // if (
-    //   Swal.fire({
-    //     icon: "info",
-    //     text: "Do you want to delete this?",
-    //   })
-    // ) {
-    //   dispatch(deleteCart(product));
-    // }
+  // const handleIncreaseQuantity = (product) => {
+  //   dispatch(increaseQuantity(product));
+  // };
+
+  // const handleDecreaseQuantity = (product) => {
+  //   dispatch(decreaseQuantity(product));
+  // };
+
+  const delProduct = (item) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -39,20 +40,20 @@ export default function Cart() {
           showConfirmButton: false,
           timer: 1500,
         });
-        dispatch(deleteCart(product));
+        dispatch(deleteCart(item));
       }
     });
   };
   return (
     <div className="p-6 border bg-green-100">
       <section className="p-3 flex flex-col ">
-        {Object.keys(state).length < 1 ? (
+        {Object.keys(items).length < 1 ? (
           <div className="text-black text-center flex justify-center items-center flex-col gap-3 h-[60vh]">
             <BsFillCartFill className="text-black text-5xl" />{" "}
             <p>Cart is Empty</p>
           </div>
         ) : (
-          state?.map((product) => (
+          items?.map((product) => (
             <section>
               <div className="flex text-center m-0 p-0 w-full justify-center items-center lg:flex lg:flex-row lg:items-center gap-6 lg:px-6 container lg:py-8  my-6 bg-white relative  shadow border py-3  ">
                 <div
@@ -92,12 +93,19 @@ export default function Cart() {
                   <p className="lg:leading-7 leading-5 text-xs">
                     {product.description.slice(0, 15)}
                   </p>
+                  {/* Increase and decrease buttons */}
                   <div className="flex gap-3 items-center my-4">
-                    <button className="border text-black px-3 border-red-600">
+                    <button
+                      className="border text-black px-3 border-red-600"
+                      // onClick={handleDecreaseQuantity}
+                    >
                       -
                     </button>
-                    <span>{0}</span>
-                    <button className="border text-black px-3 border-green-600">
+                    {/* <span>{inc}</span> */}
+                    <button
+                      className="border text-black px-3 border-green-600"
+                      // onClick={handleIncreaseQuantity}
+                    >
                       +
                     </button>
                   </div>
@@ -114,14 +122,14 @@ export default function Cart() {
           ))
         )}
       </section>
-      {Object.keys(state).length < 1 ? (
+      {Object.keys(items).length < 1 ? (
         ""
       ) : (
         <div className="flex justify-between items-center my-4 text-green-600  px-4">
           <div className="bg-white py-2 px-4 cursor-pointer font-bold hover:text-yellow-400 hover:bg-green-600 shadow-md">
             PAYMENT
           </div>
-          <div className="text-lg">Total: ${0}</div>
+          <div className="text-lg">Total: ${total.toFixed(2)}</div>
         </div>
       )}
     </div>

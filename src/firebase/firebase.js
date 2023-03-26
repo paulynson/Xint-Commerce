@@ -13,12 +13,12 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBTVLB03xTFS5SzjfbWvM2fU1AEGOXfPAw",
-  authDomain: "xint-commerce.firebaseapp.com",
-  projectId: "xint-commerce",
-  storageBucket: "xint-commerce.appspot.com",
-  messagingSenderId: "102438584373",
-  appId: "1:102438584373:web:e5e029a84c66903c96317c",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
 };
 
 // Initialize Firebase

@@ -53,29 +53,27 @@ const Home = () => {
             products
               ?.slice(0)
               .reverse()
-              .map((product) => (
+              .map((item) => (
                 <div
-                  key={product.id}
+                  key={item.id}
                   className="text-center justify-center box-h p-3 shadow-md relative bg-white rounded-sm"
                 >
-                  <Link to={`/product/${product.id}`}>
+                  <Link to={`/product/${item.id}`}>
                     <img
-                      src={product.image}
-                      alt={product.title}
+                      src={item.image}
+                      alt={item.title}
                       className="img-box"
                     />
                     <div className="py-6">
-                      <p className="my-2 text-xs">
-                        {product.title.slice(0, 24)}
-                      </p>
+                      <p className="my-2 text-xs">{item.title.slice(0, 24)}</p>
                       <p className="text-purple-700 font-bold text-2xl">
-                        ${product.price}
+                        ${item.price}
                       </p>
                     </div>
                   </Link>
                   <button
                     className="w-full bg-green-400 hover:bg-green-600 px-4 py-2 text-white absolute bottom-0 left-0 shadow-lg"
-                    onClick={() => addProduct(product)}
+                    onClick={() => addProduct(item)}
                   >
                     Add to Cart
                   </button>
@@ -102,29 +100,27 @@ const Home = () => {
         <Suspense fallback={<p>Loading...</p>}>
           <section className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-y-16 gap-x-5 ">
             {products &&
-              products?.map((product) => (
+              products?.map((item) => (
                 <div
-                  key={product.id}
+                  key={item.id}
                   className="text-center justify-center box-h p-3 shadow-md relative bg-white"
                 >
-                  <Link to={`/product/${product.id}`}>
+                  <Link to={`/product/${item.id}`}>
                     <img
-                      src={product.image}
-                      alt={product.title}
+                      src={item.image}
+                      alt={item.title}
                       className="img-box"
                     />
                     <div className="py-6">
-                      <p className="my-2 text-xs">
-                        {product.title.slice(0, 24)}
-                      </p>
+                      <p className="my-2 text-xs">{item.title.slice(0, 24)}</p>
                       <p className="text-purple-700 font-bold text-lg">
-                        ${product.price}
+                        ${item.price}
                       </p>
                     </div>
                   </Link>
                   <button
                     className="w-full bg-green-400 hover:bg-green-600 px-4 py-2 text-white absolute bottom-0 left-0 shadow-lg"
-                    onClick={() => addProduct(product)}
+                    onClick={() => addProduct(item)}
                   >
                     Add to Cart
                   </button>

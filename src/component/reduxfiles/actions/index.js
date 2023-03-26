@@ -14,3 +14,19 @@ export const deleteCart = (product) => {
     payload: product,
   };
 };
+
+// For Increasing items quantity
+// export const increaseQuantity = (product) => {
+//   return {
+//     type: "INCREASE_QUANTITY",
+//     payload: product,
+//   };
+// };
+
+// For Increasing items quantity
+// export const decreaseQuantity = (product) => {
+//   return {
+//     type: "DECREASE_QUANTITY",
+//     payload: product,
+//   };
+// };

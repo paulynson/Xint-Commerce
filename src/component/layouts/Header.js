@@ -35,7 +35,7 @@ function Header() {
     }
   };
 
-  const state = useSelector((state) => state.CartReducer);
+  const { items } = useSelector((state) => state.cart);
   // console.log(state.length);
 
   const variants = {
@@ -67,7 +67,7 @@ function Header() {
                   >
                     <BsFillCartFill className="text-white text-4xl hover:text-yellow-200 hover:border-2" />{" "}
                     <div className="h-4 w-4 flex itms-center justify-center absolute top-0 right-0 text-xs font-bold bg-yellow-400 hover:bg-green-500 rounded-full hover:border-2">
-                      <p className=""> {state.length}</p>
+                      <p className=""> {items.length}</p>
                     </div>
                   </Link>
                 </div>
@@ -170,7 +170,7 @@ function Header() {
           <Link to="/cart" className="relative hover:cursor-pointer">
             <BsFillCartFill className="text-white text-4xl" />{" "}
             <div className="h-4 w-4 flex itms-center justify-center absolute top-0 right-0 text-xs font-bold bg-yellow-400 rounded-full">
-              <p> {state.length}</p>
+              <p> {items.length}</p>
             </div>
           </Link>
         </div>
