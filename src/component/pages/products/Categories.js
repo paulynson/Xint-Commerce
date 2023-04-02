@@ -13,9 +13,11 @@ const Categories = () => {
   const [electronics, setElectronics] = useState([]);
   const [mens, setMens] = useState([]);
   const [womens, setWomens] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
 
   const dispatch = useDispatch();
 
+  // Function to dispatch a product
   const addProduct = (product) => {
     Swal.fire({
       icon: "success",
@@ -31,29 +33,27 @@ const Categories = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  //  Electronics
+  // Make an API call when the Page loads
+  const fetchAllProducts = async () => {
+    const url = "https://fakestoreapi.com/products";
+    const res = await axios(url);
+    setAllProducts(res.data);
+  };
+
   useEffect(() => {
-    const fetchElectronics = async () => {
-      //   e.preventDefault();
-      const url = "https://fakestoreapi.com/products/category/electronics";
-      const res = await axios(url);
-      setElectronics(res.data);
-      // console.log(res.data);
-    };
+    fetchAllProducts();
     fetchElectronics();
     fetchJewelery();
     fetchMens();
     fetchWomens();
   }, []);
 
-  // Refetch when clicked
-
+  // Refetch Electronics when clicked
   const fetchElectronics = async (e) => {
     e.preventDefault();
     const url = "https://fakestoreapi.com/products/category/electronics";
     const res = await axios(url);
     setElectronics(res.data);
-    // console.log(res.data);
   };
 
   //   Jewelery
@@ -100,12 +100,50 @@ const Categories = () => {
       <section className="p-10">
         <Tabs>
           <TabList>
+            <Tab onClick={fetchAllProducts}>All Products</Tab>
             <Tab onClick={fetchElectronics}>Electronics</Tab>
             <Tab onClick={fetchJewelery}>Jewelery</Tab>
             <Tab onClick={fetchMens}>Mens Clothing</Tab>
             <Tab onClick={fetchWomens}>Womens Clothing</Tab>
           </TabList>
 
+          <TabPanel>
+            <div>
+              <Suspense fallback={<p>Loading...</p>}>
+                <section className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-y-16 gap-x-5 ">
+                  {allProducts &&
+                    allProducts?.map((allProduct) => (
+                      <div
+                        key={allProduct.id}
+                        className="text-center justify-center box-h p-3 shadow-md relative bg-white"
+                      >
+                        <Link to={`/product/${allProduct.id}`}>
+                          <img
+                            src={allProduct.image}
+                            alt={allProduct.title}
+                            className="img-box"
+                          />
+                          <div className="py-6">
+                            <p className="my-2 text-xs">
+                              {allProduct.title.slice(0, 24)}
+                            </p>
+                            <p className="text-purple-700 font-bold text-lg">
+                              ₦{allProduct.price}
+                            </p>
+                          </div>
+                        </Link>
+                        <button
+                          className="w-full bg-green-400 hover:bg-green-600 px-4 py-2 text-white absolute bottom-0 left-0 shadow-lg"
+                          onClick={() => addProduct(allProduct)}
+                        >
+                          Add to Cart
+                        </button>
+                      </div>
+                    ))}
+                </section>
+              </Suspense>
+            </div>
+          </TabPanel>
           <TabPanel>
             <div>
               <Suspense fallback={<p>Loading...</p>}>
