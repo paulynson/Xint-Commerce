@@ -3,7 +3,7 @@ import axios from "axios";
 import "./products.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addCart } from "../reduxfiles/actions";
+import { addCart } from "../../reduxfiles/actions";
 import Swal from "sweetalert2";
 
 const Products = () => {
@@ -42,7 +42,7 @@ const Products = () => {
           <img
             src="/images/e8.jpg"
             alt="pix"
-            className="lg:h-[650px] h-[300px] w-full"
+            className="lg:h-[500px]  object-cover h-[300px] w-full"
           />
           <p className="absolute text-white font-bold lg:text-6xl text-4xl drop-shadow-lg shadow-black max-w-7xl">
             Plain and World Class Products
@@ -66,12 +66,12 @@ const Products = () => {
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="img-box"
+                    className="img-box "
                   />
                   <div className="py-6">
                     <p className="my-2 text-xs">{product.title.slice(0, 24)}</p>
                     <p className="text-purple-700 font-bold text-2xl">
-                      ${product.price}
+                      ₦{product.price}
                     </p>
                   </div>
                 </Link>

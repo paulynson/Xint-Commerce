@@ -1,32 +1,17 @@
-// For Items added to the cart
+// Actions
 
-export const addCart = (product) => {
-  return {
-    type: "ADDITEM",
-    payload: product,
-  };
-};
+export function addCart(product) {
+  return { type: "ADDITEM", payload: product };
+}
 
-// For Items deleted from the cart
-export const deleteCart = (product) => {
-  return {
-    type: "DELETEITEM",
-    payload: product,
-  };
-};
+export function deleteCart(product) {
+  return { type: "DELETEITEM", payload: product };
+}
 
-// For Increasing items quantity
-// export const increaseQuantity = (product) => {
-//   return {
-//     type: "INCREASE_QUANTITY",
-//     payload: product,
-//   };
-// };
+export function addQuantity(product) {
+  return { type: "ADDQUANTITY", payload: product };
+}
 
-// For Increasing items quantity
-// export const decreaseQuantity = (product) => {
-//   return {
-//     type: "DECREASE_QUANTITY",
-//     payload: product,
-//   };
-// };
+export function deleteQuantity(product) {
+  return { type: "DELETEQUANTITY", payload: product };
+}

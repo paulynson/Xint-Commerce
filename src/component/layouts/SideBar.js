@@ -3,7 +3,7 @@ import axios from "axios";
 import "../products/products.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addCart } from "../reduxfiles/actions";
+import { addCart } from "./../reduxfiles/actions";
 
 function SideBar() {
   const [productLimits, setProductLimits] = useState(null);

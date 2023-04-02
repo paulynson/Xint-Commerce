@@ -5,7 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { CgClose } from "react-icons/cg";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 import { useAuth, logout } from "../../firebase/firebase";
 import Swal from "sweetalert2";
 
@@ -52,7 +52,7 @@ function Header() {
         <Link to="/" className="hover:text-yellow-200">
           <div className="text-white flex gap-1 items-center justify-center hover:text-yellow-200">
             <SiBigcartel className="text-3xl" />
-            <p className="font-bold lg:text-2xl text-lg">Xint-Commerce</p>
+            <p className="font-bold lg:text-2xl text-lg">XintMerce</p>
           </div>
         </Link>
         <div>
@@ -65,7 +65,7 @@ function Header() {
                     to="/cart"
                     className=" max-w-10 relative cursor-pointer"
                   >
-                    <BsFillCartFill className="text-white text-4xl hover:text-yellow-200 hover:border-2" />{" "}
+                    <BsFillCartFill className="text-white text-3xl hover:text-yellow-200 hover:border-2" />{" "}
                     <div className="h-4 w-4 flex itms-center justify-center absolute top-0 right-0 text-xs font-bold bg-yellow-400 hover:bg-green-500 rounded-full hover:border-2">
                       <p className=""> {items.length}</p>
                     </div>
@@ -87,12 +87,14 @@ function Header() {
         </div>
 
         <div className="lg:flex gap-2 items-center lg:justify-between lg:flex-row flex-col gap-y-6 hidden">
-          <ul className="flex gap-3 text-white lg:mr-8 lg:justify-between lg:flex-row flex-col gap-y-6 text-center">
+          <ul className="flex gap-3 text-white lg:mr-8 lg:justify-between items-center lg:flex-row flex-col gap-y-6 text-center">
             <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? "text-yellow-400 font-bold" : "text-white"
+                  isActive
+                    ? "text-yellow-400  font-bold"
+                    : "text-white hover:text-yellow-400"
                 }
               >
                 Home
@@ -102,7 +104,9 @@ function Header() {
               <NavLink
                 to="/products"
                 className={({ isActive }) =>
-                  isActive ? "text-yellow-400 font-bold" : "text-white"
+                  isActive
+                    ? "text-yellow-400  font-bold"
+                    : "text-white hover:text-yellow-400"
                 }
               >
                 Products
@@ -112,7 +116,9 @@ function Header() {
               <NavLink
                 to="/categories"
                 className={({ isActive }) =>
-                  isActive ? "text-yellow-400 font-bold" : "text-white"
+                  isActive
+                    ? "text-yellow-400  font-bold"
+                    : "text-white hover:text-yellow-400"
                 }
               >
                 Categories
@@ -124,7 +130,9 @@ function Header() {
                   <NavLink
                     to="/login"
                     className={({ isActive }) =>
-                      isActive ? "text-yellow-400 font-bold" : "text-white"
+                      isActive
+                        ? "text-yellow-400  font-bold"
+                        : "text-white hover:text-yellow-400"
                     }
                   ></NavLink>
                 </li>
@@ -133,7 +141,9 @@ function Header() {
                   <NavLink
                     to="/login"
                     className={({ isActive }) =>
-                      isActive ? "text-yellow-400 font-bold" : "text-white"
+                      isActive
+                        ? "text-yellow-400  font-bold"
+                        : "text-white hover:text-yellow-400 hover:bg-white border-white border-2 px-5 py-2 rounded-full"
                     }
                   >
                     Login
@@ -145,9 +155,7 @@ function Header() {
               {currentUser ? (
                 <li>
                   <button
-                    className={({ isActive }) =>
-                      isActive ? "text-yellow-400 font-bold" : "text-white"
-                    }
+                    className="text-white font-bold border-white border-2 px-5 py-2 rounded-full hover:text-yellow-400 hover:bg-white"
                     onClick={handleLogout}
                   >
                     Logout
@@ -158,7 +166,9 @@ function Header() {
                   <NavLink
                     to="/signup"
                     className={({ isActive }) =>
-                      isActive ? "text-yellow-400 font-bold" : "text-white"
+                      isActive
+                        ? "text-yellow-400  font-bold"
+                        : "text-green-500 hover:text-yellow-400 bg-white border-2 px-5 py-2 rounded-full"
                     }
                   >
                     Signup
@@ -177,19 +187,21 @@ function Header() {
       </div>
       {/* <slideInDown> */}
       {show && (
-        <AnimatePresence>
-          <motion.div
+        <section>
+          <div
             className="gap-2 lg:hidden items-center lg:justify-between lg:flex-row flex-col gap-y-6 shadow-lg py-6"
-            initial="hidden"
-            animate="visible"
-            variants={variants}
+            // initial="hidden"
+            // animate="visible"
+            // variants={variants}
           >
             <ul className="flex gap-3 text-white lg:mr-8 lg:justify-between lg:flex-row flex-col gap-y-6 text-center">
               <li>
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    isActive ? "text-yellow-400 font-bold" : "text-white"
+                    isActive
+                      ? "text-yellow-400 font-bold"
+                      : "text-white hover:text-yellow-400"
                   }
                 >
                   Home
@@ -199,7 +211,9 @@ function Header() {
                 <NavLink
                   to="/products"
                   className={({ isActive }) =>
-                    isActive ? "text-yellow-400 font-bold" : "text-white"
+                    isActive
+                      ? "text-yellow-400 font-bold"
+                      : "text-white hover:text-yellow-400"
                   }
                 >
                   Products
@@ -209,7 +223,9 @@ function Header() {
                 <NavLink
                   to="/categories"
                   className={({ isActive }) =>
-                    isActive ? "text-yellow-400 font-bold" : "text-white"
+                    isActive
+                      ? "text-yellow-400 font-bold"
+                      : "text-white hover:text-yellow-400"
                   }
                 >
                   Categories
@@ -221,7 +237,9 @@ function Header() {
                     <NavLink
                       to="/login"
                       className={({ isActive }) =>
-                        isActive ? "text-yellow-400 font-bold" : "text-white"
+                        isActive
+                          ? "text-yellow-400 font-bold"
+                          : "text-white hover:text-yellow-400"
                       }
                     ></NavLink>
                   </li>
@@ -230,7 +248,9 @@ function Header() {
                     <NavLink
                       to="/login"
                       className={({ isActive }) =>
-                        isActive ? "text-yellow-400 font-bold" : "text-white"
+                        isActive
+                          ? "text-yellow-400 font-bold"
+                          : "text-white hover:text-yellow-400 hover:bg-white border-white border-2 px-5 py-2 rounded-full"
                       }
                     >
                       Login
@@ -242,9 +262,7 @@ function Header() {
                 {currentUser ? (
                   <li>
                     <button
-                      className={({ isActive }) =>
-                        isActive ? "text-yellow-400 font-bold" : "text-white"
-                      }
+                      className="text-white font-bold border-white border-2 px-5 py-2 rounded-full hover:text-yellow-400 hover:bg-white"
                       onClick={handleLogout}
                     >
                       Logout
@@ -255,7 +273,9 @@ function Header() {
                     <NavLink
                       to="/signup"
                       className={({ isActive }) =>
-                        isActive ? "text-yellow-400 font-bold" : "text-white"
+                        isActive
+                          ? "text-yellow-400 font-bold"
+                          : "text-green-500 hover:text-yellow-400 bg-white border-2 px-5 py-2 rounded-full"
                       }
                     >
                       Signup
@@ -272,8 +292,8 @@ function Header() {
                 </div>
               </Link>
             </div> */}
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        </section>
       )}
       {/* </slideInDown> */}
     </div>

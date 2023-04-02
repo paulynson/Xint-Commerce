@@ -28,7 +28,6 @@ const reducer = (state = initialCartState, action) => {
           },
         ];
       }
-      break;
 
     case "DELETEITEM":
       const delExist = state.find((x) => x.id === product.id);
@@ -39,11 +38,9 @@ const reducer = (state = initialCartState, action) => {
           x.id === product.id ? { ...x, qty: x.qty - 1 } : x
         );
       }
-      break;
 
     default:
       return state;
-      break;
   }
 };
 

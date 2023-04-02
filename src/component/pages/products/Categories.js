@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { useDispatch } from "react-redux";
-import { addCart } from "../reduxfiles/actions";
+import { addCart } from "../../reduxfiles/actions";
 import Swal from "sweetalert2";
 
 const Categories = () => {
@@ -41,6 +41,9 @@ const Categories = () => {
       // console.log(res.data);
     };
     fetchElectronics();
+    fetchJewelery();
+    fetchMens();
+    fetchWomens();
   }, []);
 
   // Refetch when clicked
@@ -80,9 +83,9 @@ const Categories = () => {
           <img
             src="/images/e9.jpg"
             alt="pix"
-            className="lg:h-[650px] h-[300px] w-full"
+            className="lg:h-[500px]  object-cover h-[300px] w-full"
           />
-          <p className="absolute text-yellow-500 font-bold lg:text-6xl text-4xl drop-shadow-lg shadow-white max-w-7xl">
+          <p className="absolute text-yellow-500 font-bold lg:text-6xl text-4xl drop-shadow-xl shadow-white max-w-7xl">
             Categories and Products
           </p>
         </div>
@@ -124,7 +127,7 @@ const Categories = () => {
                               {electronic.title.slice(0, 24)}
                             </p>
                             <p className="text-purple-700 font-bold text-lg">
-                              ${electronic.price}
+                              ₦{electronic.price}
                             </p>
                           </div>
                         </Link>
@@ -162,7 +165,7 @@ const Categories = () => {
                               {jewel.title.slice(0, 24)}
                             </p>
                             <p className="text-purple-700 font-bold text-lg">
-                              ${jewel.price}
+                              ₦{jewel.price}
                             </p>
                           </div>
                         </Link>
@@ -200,7 +203,7 @@ const Categories = () => {
                               {men.title.slice(0, 24)}
                             </p>
                             <p className="text-purple-700 font-bold text-lg">
-                              ${men.price}
+                              ₦{men.price}
                             </p>
                           </div>
                         </Link>
@@ -238,7 +241,7 @@ const Categories = () => {
                               {women.title.slice(0, 24)}
                             </p>
                             <p className="text-purple-700 font-bold text-lg">
-                              ${women.price}
+                              ₦{women.price}
                             </p>
                           </div>
                         </Link>

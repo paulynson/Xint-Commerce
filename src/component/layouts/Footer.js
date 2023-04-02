@@ -11,11 +11,11 @@ function Footer() {
         <Link to="/" className="hover:text-yellow-200">
           <div className="text-white flex gap-1 items-center justify-center hover:text-yellow-200">
             <SiBigcartel className="text-3xl" />
-            <p className="font-bold text-2xl">Xint-Commerce</p>
+            <p className="font-bold text-2xl">XintMerce</p>
           </div>
         </Link>
         <p className="text-yellow-400 text-xs my-4">
-          © {date.getFullYear()}, Xint-Commerce{" "}
+          © {date.getFullYear()}, XintMerce{" "}
           <span className="text-white">Your Famous Store...</span>
         </p>
       </div>
