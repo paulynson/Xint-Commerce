@@ -145,7 +145,7 @@ export default function Cart() {
           >
             Proceed to Checkout
           </Link>
-          <div className="text-lg">Total: ₦{total}</div>
+          <div className="text-lg">Total: ₦{total.toFixed(2)}</div>
           {/* <div className="text-lg">Total: ₦{total}</div> */}
         </div>
       )}
