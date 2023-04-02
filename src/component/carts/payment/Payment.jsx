@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux/es/exports";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -10,6 +10,11 @@ const Payment = (async) => {
 
   // TO check if the user is logged in before final checkout
   const currentUser = useAuth();
+
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // useRefs to confirm the inputs
   const fullNameRef = useRef();

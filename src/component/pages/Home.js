@@ -22,6 +22,11 @@ const Home = () => {
     dispatch(addCart(product));
   };
 
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
